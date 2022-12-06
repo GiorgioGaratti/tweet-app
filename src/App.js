@@ -1,23 +1,25 @@
-import logo from './logo.svg';
+import Title from './components/Title';
+import TweetList from './components/TweetList';
+import getTweets from './api/tweetAPI';
 import './App.css';
 
 function App() {
+
+  const tweetList = getTweets();
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Title />
+      <TweetList tweetList={tweetList}/>
+      {/* <div className='TweetList' tweetList={tweetList}>
+        <div className='Tweet' 
+          key={id}
+          >
+          <img className='Image'></img>
+          <div className='User'></div>
+          <div className='TweetContent'></div>
+        </div>
+      </div> */}
     </div>
   );
 }

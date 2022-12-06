@@ -1,38 +1,91 @@
-.App {
+body {
+  background-color:#1d9bf0;
+}
+
+.title {
   text-align: center;
+  font: 30px;
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 50px 0px 50px 0px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.tweetlist {
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
+} 
+
+.tweet {
+  width:40%;
+  margin-bottom: 25px;
+  border: 2px;
+  border-color: blue;
+  border-radius: 2%;
+  background-color: whitesmoke;
+} 
+
+.tweetbody {
+  padding: 10px 15px;
 }
 
-.App-link {
-  color: #61dafb;
+.image {
+  width: 100%;
+  height: 100%;
+  border-top-left-radius: 2%;
+  border-top-right-radius: 2%;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.user {
+  display: flex;
+  flex-direction: row;
+  margin-top: 10px;
 }
+
+.image_avatar {
+  vertical-align: middle;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  margin-right: 7px;
+}
+
+.fullname_username {
+  align-self: center;
+}
+
+.fullname {
+  font-weight: 500;
+  margin: 0px;
+}
+
+.username {
+  margin: 0px;
+  color: darkgrey;
+}
+
+.tweetinteraction {
+  display: flex;
+  flex-direction: row;
+}
+
+.tweetinteraction img {
+  height: 16px;
+  width: 16px;
+}
+
+.numberlikes {
+  margin: 0px 10px 0px 0px;
+}
+
+.numberviews {
+  margin: 0px 5px 0px 0px;
+}
+
+.iconinteraction {
+  margin-right: 3px;
+  align-self: center;
+}
+
+
+
