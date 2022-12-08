@@ -3,10 +3,51 @@ body {
 }
 
 .title {
+  color: beige;
   text-align: center;
   font: 30px;
   font-family: Arial, Helvetica, sans-serif;
   margin: 50px 0px 50px 0px;
+}
+
+.addtweet {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
+  border-radius: 12px;
+}
+/* CSS */
+.addbtn {
+  background-color: #fff;
+  border: 1px solid #d5d9d9;
+  border-radius: 8px;
+  box-sizing: border-box;
+  color: #0f1111;
+  cursor: pointer;
+  display: inline-block;
+  font-family:  Arial, Helvetica, sans-serif;
+  font-size: 13px;
+  font-weight: 550;
+  line-height: 22px;
+  padding: 10px 10px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: middle;
+  width: 200px;
+}
+
+.addbtn:hover {
+  background-color: #f7fafa;
+}
+
+.addbtn:focus {
+  border-color: #008296;
+  box-shadow: rgba(213, 217, 217, .5) 0 2px 5px 0;
+  outline: 0;
 }
 
 .tweetlist {
@@ -26,7 +67,7 @@ body {
 } 
 
 .tweetbody {
-  padding: 10px 15px;
+  padding: 10px 15px 15px 15px;
 }
 
 .image {
@@ -64,9 +105,14 @@ body {
   color: darkgrey;
 }
 
+.tweetdate {
+  color: darkgrey;
+}
+
 .tweetinteraction {
   display: flex;
   flex-direction: row;
+  color: darkgrey;
 }
 
 .tweetinteraction img {
@@ -75,16 +121,17 @@ body {
 }
 
 .numberlikes {
-  margin: 0px 10px 0px 0px;
+  margin: 0px 15px 0px 0px;
 }
 
 .numberviews {
-  margin: 0px 5px 0px 0px;
+  margin: 0px 10px 0px 0px;
 }
 
 .iconinteraction {
   margin-right: 3px;
   align-self: center;
+  color: darkgrey;
 }
 
 
