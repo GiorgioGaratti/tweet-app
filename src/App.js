@@ -6,33 +6,43 @@ import './App.css';
 import AddTweet from './components/AddTweet';
 import findNewTweets from './lib/findNewTweets';
 import findMostRecentTweet from './lib/findMostRecentTweet';
+import NoMoreTweetsMessage from './components/NoMoreTweetsMessage';
 
 function App() {
 
-	// inizializzo un hook contenente un array con: [elementi da mostrare, tutti i tweet dalle API]
+	// hook: [tweet list to render, tweet list from API]
 	const [tweetList, setTweetList] = useState([getInitialTweets(), getTweets()]);
 
+    // hook: (boolean) if true show 'no more tweets' message
+	const [displayNoMoreTwMex, setDisplayNoMoreTwMex] = useState(false);
 
+    // called onclick of addtweet button
 	const addTweet = () => {
-		// shallow copy della lista completa dei tweeet dall'api
+
+		// shallow copy of full tweet list from API
 		const fullListOfTweet = [...tweetList.at(1)];
 
-		// shallow copy della lista completa dei tweeet a video
+		// shallow copy of rendered tweets list
 		const listOfRenderedTweet = [...tweetList.at(0)];
 
-		const listOfNotDisplayedTweets = findNewTweets(fullListOfTweet, listOfRenderedTweet);
+		if(fullListOfTweet.length !== listOfRenderedTweet.length){
+			const listOfNotDisplayedTweets = findNewTweets(fullListOfTweet, listOfRenderedTweet);
 
-		const newTweetToAdd = findMostRecentTweet(listOfNotDisplayedTweets);
+			const newTweetToAdd = findMostRecentTweet(listOfNotDisplayedTweets);
 
-		listOfRenderedTweet.unshift(newTweetToAdd);
+			listOfRenderedTweet.unshift(newTweetToAdd);
 
-		setTweetList([listOfRenderedTweet,fullListOfTweet]);
+			setTweetList([listOfRenderedTweet,fullListOfTweet]);
+		} else if (fullListOfTweet.length === listOfRenderedTweet.length) {
+			setDisplayNoMoreTwMex(true);
+		}
 	}
 
 	return (
 		<div>
 			<Title />
 			<AddTweet action={addTweet} />
+			<NoMoreTweetsMessage display={displayNoMoreTwMex} />
 			<TweetList tweetList={tweetList} />
 		</div>
 	);

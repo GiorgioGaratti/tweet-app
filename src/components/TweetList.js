@@ -7,10 +7,11 @@ const TweetList = (props) => {
     return (
         <div className="tweetlist">
             {
+            // render each tweet of the list
             copyTweetListToRender.map(tweet => {
                 return <Tweet 
                     className="tweet" 
-                    key={tweet.id} 
+                    key={tweet.id} // unique id required
                     user={tweet.user} 
                     tweetContent={tweet.tweetContent} />;
             })

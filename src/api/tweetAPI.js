@@ -1,7 +1,9 @@
 import getDates from '../lib/createDate.js';
 
+// change this value to set initial number of tweets to render
 const TWEETSTODISPLAYONSTART = 3;
 
+// get dates objects for tweets
 const datetimeList = getDates();
 
 const datetime1 = datetimeList.at(0);
@@ -10,8 +12,9 @@ const datetime3 = datetimeList.at(2);
 const datetime4 = datetimeList.at(3);
 const datetime5 = datetimeList.at(4);
 const datetime6 = datetimeList.at(5);
+const datetime7 = datetimeList.at(6);
 
-
+// get full list of stored tweets
 const getTweets = () => {
     
     return [
@@ -134,16 +137,37 @@ const getTweets = () => {
             likes: 63,
             views: 13
         }
+    },
+    {
+        id: 7,
+        user: {
+            imgAvatar: "https://cdn-icons-png.flaticon.com/512/4140/4140047.png",
+            imgAvAlt: "foto avatar 7",
+            fullname: "Luca Bianchi",
+            username: "@luca_bianchi_90"
+        },
+        tweetContent: {
+            imgSrc: "https://images.pexels.com/photos/2775196/pexels-photo-2775196.jpeg",
+            imgAlt: "foto tweet 7",
+            text: "Donec semper, magna non sollicitudin tincidunt.",
+            datetime: {
+                dateISO: datetime7.dateISO,
+                dateFormatted: datetime7.dateFormatted
+            },
+            likes: 63121,
+            views: 1312415
+        }
     }
 ]};
 
+// get tweets to render at app load
 const getInitialTweets = () => {
     
     const startingTweets = getTweets().filter(tweet => {
         return tweet.id <= TWEETSTODISPLAYONSTART
     });
 
-    return startingTweets;
+    return startingTweets; // [tweet1, tweet2, ...]
 }
 
 export {getTweets, getInitialTweets};

@@ -1,138 +1,173 @@
+/* GENERAL */
+/* height e width di un elemento settano la sue dimensioni finali 
+   dimensioni = height + width + padding + border */
+* {
+	box-sizing: border-box;
+}
+
 body {
-  background-color:#1d9bf0;
+	background-color: #1d9bf0;
 }
 
+.display-none {
+	display: none;
+}
+
+/* Title */
 .title {
-  color: beige;
-  text-align: center;
-  font: 30px;
-  font-family: Arial, Helvetica, sans-serif;
-  margin: 50px 0px 50px 0px;
+	color: #fff;
+	text-align: center;
+	font: 30px;
+	font-family: Arial, Helvetica, sans-serif;
+	margin: 50px 0px 50px 0px;
 }
 
-.addtweet {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 30px;
-  border-radius: 12px;
+/* AttTweet & NoMoreTweetsMessage */
+.addtweet, .nomoretweetsmessagediv {
+	display: flex;
+	justify-content: center;
+	margin-bottom: 30px;
+	border-radius: 12px;
 }
-/* CSS */
+
 .addbtn {
-  background-color: #fff;
-  border: 1px solid #d5d9d9;
-  border-radius: 8px;
-  box-sizing: border-box;
-  color: #0f1111;
-  cursor: pointer;
-  display: inline-block;
-  font-family:  Arial, Helvetica, sans-serif;
-  font-size: 13px;
-  font-weight: 550;
-  line-height: 22px;
-  padding: 10px 10px;
-  position: relative;
-  text-align: center;
-  text-decoration: none;
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
-  vertical-align: middle;
-  width: 200px;
+	background-color: #fff;
+	border: 1px solid #d5d9d9;
+	border-radius: 33px;
+	box-sizing: border-box;
+	color: #0f1111;
+	cursor: pointer;
+	display: inline-block;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 13px;
+	font-weight: 550;
+	line-height: 22px;
+	padding: 10px;
+	position: relative;
+	text-align: center;
+	text-decoration: none;
+	user-select: none;
+	-webkit-user-select: none;
+	touch-action: manipulation;
+	vertical-align: middle;
+	width: 200px;
 }
 
 .addbtn:hover {
-  background-color: #f7fafa;
+	background-color: #f7fafa;
 }
 
 .addbtn:focus {
-  border-color: #008296;
-  box-shadow: rgba(213, 217, 217, .5) 0 2px 5px 0;
-  outline: 0;
+	border-color: #008296;
+	box-shadow: rgba(213, 217, 217, .5) 0 2px 5px 0;
+	outline: 0;
 }
 
-.tweetlist {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-} 
+.nomoretweetsmessage {
+	background-color: #fff;
+	border: 1px solid #d5d9d9;
+	border-radius: 5px;
+	box-sizing: border-box;
+	color: #0f1111;
+	display: inline-block;
+	padding: 10px;
+	margin: 10px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 13px;
+	font-weight: 550;
+	line-height: 22px;
+	position: relative;
+	text-align: center;
+	text-decoration: none;
+	user-select: none;
+	-webkit-user-select: none;
+	touch-action: manipulation;
+	vertical-align: middle;
+	width: 360px;
+}
 
+/* TweetList */
+.tweetlist {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+/* Tweet */
 .tweet {
-  width:40%;
-  margin-bottom: 25px;
-  border: 2px;
-  border-color: blue;
-  border-radius: 2%;
-  background-color: whitesmoke;
-} 
+	width: 40%;
+	margin-bottom: 25px;
+	border: 2px;
+	border-color: blue;
+	border-radius: 2%;
+	background-color: whitesmoke;
+}
 
 .tweetbody {
-  padding: 10px 15px 15px 15px;
+	padding: 10px 15px 15px 15px;
 }
 
 .image {
-  width: 100%;
-  height: 100%;
-  border-top-left-radius: 2%;
-  border-top-right-radius: 2%;
+	width: 100%;
+	height: 100%;
+	border-top-left-radius: 2%;
+	border-top-right-radius: 2%;
 }
 
 .user {
-  display: flex;
-  flex-direction: row;
-  margin-top: 10px;
+	display: flex;
+	flex-direction: row;
+	margin-top: 10px;
 }
 
 .image_avatar {
-  vertical-align: middle;
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  margin-right: 7px;
+	vertical-align: middle;
+	width: 60px;
+	height: 60px;
+	border-radius: 50%;
+	margin-right: 7px;
 }
 
 .fullname_username {
-  align-self: center;
+	align-self: center;
 }
 
 .fullname {
-  font-weight: 500;
-  margin: 0px;
+	font-weight: 500;
+	margin: 0px;
 }
 
 .username {
-  margin: 0px;
-  color: darkgrey;
+	margin: 0px;
+	color: darkgrey;
 }
 
 .tweetdate {
-  color: darkgrey;
+	color: darkgrey;
 }
 
 .tweetinteraction {
-  display: flex;
-  flex-direction: row;
-  color: darkgrey;
+	display: flex;
+	flex-direction: row;
+	color: darkgrey;
 }
 
 .tweetinteraction img {
-  height: 16px;
-  width: 16px;
+	height: 16px;
+	width: 16px;
 }
 
 .numberlikes {
-  margin: 0px 15px 0px 0px;
+	margin: 0px 15px 0px 0px;
 }
 
 .numberviews {
-  margin: 0px 10px 0px 0px;
+	margin: 0px 10px 0px 0px;
 }
 
 .iconinteraction {
-  margin-right: 3px;
-  align-self: center;
-  color: darkgrey;
+	margin-right: 3px;
+	align-self: center;
+	color: darkgrey;
 }
-
-
-

@@ -1,7 +1,18 @@
-// data una qualsiasi lista di tweet recupero quello con la data più recente
+// get most recent tweet from a list
 const findMostRecentTweet = (listOfNotDisplayedTweets) => {
 
-    return listOfNotDisplayedTweets.sort().at(0);
+    // sort tweet list by the order of ISO-formatted dates
+    return listOfNotDisplayedTweets.sort((a,b) => {
+        let exit;
+        if (a.tweetContent.datetime.dateISO > b.tweetContent.datetime.dateISO){
+            exit = 1;
+        } else if (a.tweetContent.datetime.dateISO === b.tweetContent.datetime.dateISO){
+            exit = 0;
+        } else if (a.tweetContent.datetime.dateISO < b.tweetContent.datetime.dateISO){
+            exit = -1;
+        }
+        return exit;
+    }).at(listOfNotDisplayedTweets.length -1);// return tweet with most recent date
 
 }
 

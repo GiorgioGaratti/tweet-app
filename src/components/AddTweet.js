@@ -1,3 +1,4 @@
+// AddTweet -> button to render most recent tweet from API
 const AddTweet = (props) => {
 
     return (
