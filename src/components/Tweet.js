@@ -8,7 +8,10 @@ const Tweet = (props) => {
             <Image tweetContent={props.tweetContent} />
             <div className="tweetbody">
                 <User user={props.user} />
-                <TweetContent tweetContent={props.tweetContent} />
+                <TweetContent tweetId={props.id} 
+                    tweetContent={props.tweetContent} 
+                    changeStateAction={props.changeStateAction}
+                    tweetList={props.tweetList} />
             </div>
         </div>
     );

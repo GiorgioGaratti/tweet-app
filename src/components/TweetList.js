@@ -9,11 +9,16 @@ const TweetList = (props) => {
             {
             // render each tweet of the list
             copyTweetListToRender.map(tweet => {
+                
+            console.log("console.log ---> "+copyTweetListToRender.toString());
                 return <Tweet 
                     className="tweet" 
-                    key={tweet.id} // unique id required
+                    key={tweet.id} // unique id required, cannot access from props
+                    id={tweet.id}
                     user={tweet.user} 
-                    tweetContent={tweet.tweetContent} />;
+                    tweetContent={tweet.tweetContent}
+                    changeStateAction={props.changeStateAction}
+                    tweetList={props.tweetList} />;
             })
             }
         </div>

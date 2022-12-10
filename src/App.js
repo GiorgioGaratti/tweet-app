@@ -23,27 +23,31 @@ function App() {
 		const fullListOfTweet = [...tweetList.at(1)];
 
 		// shallow copy of rendered tweets list
-		const listOfRenderedTweet = [...tweetList.at(0)];
+		const listOfRenderedTweets = [...tweetList.at(0)];
 
-		if(fullListOfTweet.length !== listOfRenderedTweet.length){
-			const listOfNotDisplayedTweets = findNewTweets(fullListOfTweet, listOfRenderedTweet);
+		if(fullListOfTweet.length !== listOfRenderedTweets.length){
+			const listOfNotDisplayedTweets = findNewTweets(fullListOfTweet, listOfRenderedTweets);
 
 			const newTweetToAdd = findMostRecentTweet(listOfNotDisplayedTweets);
 
-			listOfRenderedTweet.unshift(newTweetToAdd);
+			listOfRenderedTweets.unshift(newTweetToAdd);
 
-			setTweetList([listOfRenderedTweet,fullListOfTweet]);
-		} else if (fullListOfTweet.length === listOfRenderedTweet.length) {
+			setTweetList([listOfRenderedTweets,fullListOfTweet]);
+		} else if (fullListOfTweet.length === listOfRenderedTweets.length) {
 			setDisplayNoMoreTwMex(true);
 		}
 	}
+
+    const deleteTweetCallback = (newListOfTweetsToRender) => {
+        setTweetList([newListOfTweetsToRender,tweetList.at(1)]);
+    }
 
 	return (
 		<div>
 			<Title />
 			<AddTweet action={addTweet} />
 			<NoMoreTweetsMessage display={displayNoMoreTwMex} />
-			<TweetList tweetList={tweetList} />
+			<TweetList tweetList={tweetList} changeStateAction={deleteTweetCallback} />
 		</div>
 	);
 }

@@ -2,7 +2,7 @@ const NoMoreTweetsMessage = (props) => {
     // render message or nothing
     return props.display ? (
         <div className="nomoretweetsmessagediv">
-            <p className="nomoretweetsmessage">NON CI SONO PIU' TWEET DA MOSTRARE</p>
+            <p className="nomoretweetsmessage">NESSUN NUOVO TWEET</p>
         </div>
     ) : null;
 
