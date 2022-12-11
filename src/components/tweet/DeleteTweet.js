@@ -1,4 +1,4 @@
-import deleteTweet from "../lib/deleteTweet";
+import deleteTweet from "../../lib/deleteTweet";
 
 // trash bin icon
 const DeleteTweet = (props) => {

@@ -1,5 +1,5 @@
 import Image from "./Image";
-import User from "./User";
+import User from "../user/User";
 import TweetContent from "./TweetContent";
 
 const Tweet = (props) => {
