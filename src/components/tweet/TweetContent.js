@@ -10,8 +10,7 @@ const TweetContent = (props) => {
                 <img className="iconinteraction" src="img/heart.png" alt="heart"></img><p className="numberlikes">{props.tweetContent.likes}</p>
                 <img className="iconinteraction" src="img/view.png" alt="view"></img><p className="numberviews">{props.tweetContent.views}</p>
                 <DeleteTweet tweetId={props.tweetId} 
-                    changeStateAction={props.changeStateAction}
-                    tweetList={props.tweetList} />
+                    changeStateAction={props.changeStateAction} />
             </div>
         </div>
     );

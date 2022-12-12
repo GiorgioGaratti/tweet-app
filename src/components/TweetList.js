@@ -1,7 +1,7 @@
 import Tweet from "./tweet/Tweet";
 
 const TweetList = (props) => {
-
+    // to avoid errors in init phase, before mounting App.js and initializing 'tweetList' hook
     if(props.tweetList !== undefined){
 
         return (
@@ -16,8 +16,7 @@ const TweetList = (props) => {
                         id={tweet.id}
                         user={tweet.user} 
                         tweetContent={tweet.tweetContent}
-                        changeStateAction={props.changeStateAction}
-                        tweetList={props.tweetList} />;
+                        changeStateAction={props.changeStateAction} />;
                 })
                 }
             </div>

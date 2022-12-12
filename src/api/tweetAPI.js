@@ -16,6 +16,7 @@ const datetime7 = datetimeList.at(6);
 
 // get full list of stored tweets
 const getTweets = () => {
+    console.log("gettweets()");
     return [
     {
         id: 1,
@@ -163,7 +164,7 @@ const getTweets = () => {
 const getInitialTweets = (tweetsFromAPI) => {
     
     const startingTweets = tweetsFromAPI.filter(tweet => {
-        return tweet.id <= TWEETSTODISPLAYONSTART
+        return tweet.id <= TWEETSTODISPLAYONSTART;
     });
 
     return startingTweets; // [tweet1, tweet2, ...]

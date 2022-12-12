@@ -7,58 +7,65 @@ import AddTweet from './components/AddTweet';
 import findNewTweets from './lib/findNewTweets';
 import findMostRecentTweet from './lib/findMostRecentTweet';
 import NoMoreTweetsMessage from './components/NoMoreTweetsMessage';
+import deleteTweet from './lib/deleteTweet';
 
 function App() {
-
+    
+    // hook: list of tweets from API
+    const [tweetsFromAPI, setTweetsFromAPI] = useState();
 	// hook: list of tweets to render
 	const [tweetList, setTweetList] = useState();
+    // hook: (boolean) if true show 'no more tweets' message
+	const [displayNoMoreTwMex, setDisplayNoMoreTwMex] = useState();
 
     useEffect(() => {
-        // full list of tweets from API
-        const tweetsFromAPI = getTweets();
-        setTweetList(getInitialTweets([...tweetsFromAPI]));
-    }, []);
+        console.log("effects dopo mount di App.js:");
+        const listOfAllTweets = getTweets();
+        setTweetsFromAPI(listOfAllTweets);
+        console.log(listOfAllTweets);
+        setTweetList(getInitialTweets(listOfAllTweets));
+        setDisplayNoMoreTwMex(false);
+        console.log(false);
+    },[]);
 
-    // hook: (boolean) if true show 'no more tweets' message
-	const [displayNoMoreTwMex, setDisplayNoMoreTwMex] = useState(false);
+    useEffect(() => {
+        console.log("set di tweetList");
+    }, [tweetList]);
 
-    if(tweetList !== null){
+    useEffect(() => {
+        console.log("effect dopo set di teewtlist from api");
+    },[tweetsFromAPI]);
 
-        // called onclick of addtweet button
-	    const handleAddTweet = (tweetsFromAPI) => {
+    // called onclick of addtweet button
+    // TODO: think how to isolate logic
+    const handleAddTweet = (tweetsFromAPI, tweetList) => {
+        if(tweetsFromAPI.length !== tweetList.length){
+            const listOfNotDisplayedTweets = findNewTweets(tweetsFromAPI, tweetList);
 
-		/* // shallow copy of full tweet list from API
-		const fullListOfTweet = [...tweetList.at(1)]; */
+            const newTweetToAdd = findMostRecentTweet(listOfNotDisplayedTweets);
 
-		/* // shallow copy of rendered tweets list
-		const listOfRenderedTweets = [...tweetList.at(0)]; */
+            tweetList.unshift(newTweetToAdd);
 
-		if(tweetsFromAPI.length !== tweetList.length){
-			const listOfNotDisplayedTweets = findNewTweets(tweetsFromAPI, tweetList);
-
-			const newTweetToAdd = findMostRecentTweet(listOfNotDisplayedTweets);
-
-			tweetList.unshift(newTweetToAdd);
-
-			setTweetList(tweetList);
-		} else if (tweetsFromAPI.length === tweetList.length) {
-			setDisplayNoMoreTwMex(true);
-		}
-	}
-
+            setTweetList(tweetList);
+        } else if (tweetsFromAPI.length === tweetList.length) {
+            setDisplayNoMoreTwMex(true);
+        }
     }
     
 
-    const handleDeleteTweetCallback = (newListOfTweetsToRender) => {
-        setTweetList(newListOfTweetsToRender);
+    const handleDeleteTweet = (tweetIdToRemove) => {
+        console.log("chiamata handleDeleteTweet");
+        setTweetList(deleteTweet(tweetList,tweetIdToRemove));
     }
+    
+    console.log("render App.js");
 
 	return (
 		<div>
 			<Title />
-			<AddTweet action={handleAddTweet} />
+			<AddTweet action={handleAddTweet} tweetsFromAPI={tweetsFromAPI} tweetList={tweetList} />
 			<NoMoreTweetsMessage display={displayNoMoreTwMex} />
-			<TweetList tweetList={tweetList} changeStateAction={handleDeleteTweetCallback} />
+			<TweetList tweetList={tweetList} changeStateAction={handleDeleteTweet} />
 		</div>
 	);
 }

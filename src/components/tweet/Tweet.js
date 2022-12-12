@@ -10,8 +10,7 @@ const Tweet = (props) => {
                 <User user={props.user} />
                 <TweetContent tweetId={props.id} 
                     tweetContent={props.tweetContent} 
-                    changeStateAction={props.changeStateAction}
-                    tweetList={props.tweetList} />
+                    changeStateAction={props.changeStateAction} />
             </div>
         </div>
     );
