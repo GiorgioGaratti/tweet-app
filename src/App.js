@@ -1,7 +1,7 @@
 import Title from './components/Title';
 import TweetList from './components/TweetList';
 import { getInitialTweets, getTweets} from './api/tweetAPI';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './App.css';
 import AddTweet from './components/AddTweet';
 import findNewTweets from './lib/findNewTweets';
@@ -10,46 +10,59 @@ import NoMoreTweetsMessage from './components/NoMoreTweetsMessage';
 
 function App() {
 
-	// hook: [tweet list to render, tweet list from API]
-	const [tweetList, setTweetList] = useState([getInitialTweets(), getTweets()]);
+	// hook: list of tweets to render
+	const [tweetList, setTweetList] = useState();
+
+    useEffect(() => {
+        // full list of tweets from API
+        const tweetsFromAPI = getTweets();
+        setTweetList(getInitialTweets([...tweetsFromAPI]));
+    }, []);
 
     // hook: (boolean) if true show 'no more tweets' message
 	const [displayNoMoreTwMex, setDisplayNoMoreTwMex] = useState(false);
 
-    // called onclick of addtweet button
-	const addTweet = () => {
+    if(tweetList !== null){
 
-		// shallow copy of full tweet list from API
-		const fullListOfTweet = [...tweetList.at(1)];
+        // called onclick of addtweet button
+	    const handleAddTweet = (tweetsFromAPI) => {
 
-		// shallow copy of rendered tweets list
-		const listOfRenderedTweets = [...tweetList.at(0)];
+		/* // shallow copy of full tweet list from API
+		const fullListOfTweet = [...tweetList.at(1)]; */
 
-		if(fullListOfTweet.length !== listOfRenderedTweets.length){
-			const listOfNotDisplayedTweets = findNewTweets(fullListOfTweet, listOfRenderedTweets);
+		/* // shallow copy of rendered tweets list
+		const listOfRenderedTweets = [...tweetList.at(0)]; */
+
+		if(tweetsFromAPI.length !== tweetList.length){
+			const listOfNotDisplayedTweets = findNewTweets(tweetsFromAPI, tweetList);
 
 			const newTweetToAdd = findMostRecentTweet(listOfNotDisplayedTweets);
 
-			listOfRenderedTweets.unshift(newTweetToAdd);
+			tweetList.unshift(newTweetToAdd);
 
-			setTweetList([listOfRenderedTweets,fullListOfTweet]);
-		} else if (fullListOfTweet.length === listOfRenderedTweets.length) {
+			setTweetList(tweetList);
+		} else if (tweetsFromAPI.length === tweetList.length) {
 			setDisplayNoMoreTwMex(true);
 		}
 	}
 
-    const deleteTweetCallback = (newListOfTweetsToRender) => {
-        setTweetList([newListOfTweetsToRender,tweetList.at(1)]);
+    }
+    
+
+    const handleDeleteTweetCallback = (newListOfTweetsToRender) => {
+        setTweetList(newListOfTweetsToRender);
     }
 
 	return (
 		<div>
 			<Title />
-			<AddTweet action={addTweet} />
+			<AddTweet action={handleAddTweet} />
 			<NoMoreTweetsMessage display={displayNoMoreTwMex} />
-			<TweetList tweetList={tweetList} changeStateAction={deleteTweetCallback} />
+			<TweetList tweetList={tweetList} changeStateAction={handleDeleteTweetCallback} />
 		</div>
 	);
 }
 
 export default App;
+
+// rinominare funzioni collegate alle azioni dell'utente con handleEcc...

@@ -16,7 +16,6 @@ const datetime7 = datetimeList.at(6);
 
 // get full list of stored tweets
 const getTweets = () => {
-    
     return [
     {
         id: 1,
@@ -161,9 +160,9 @@ const getTweets = () => {
 ]};
 
 // get tweets to render at app load
-const getInitialTweets = () => {
+const getInitialTweets = (tweetsFromAPI) => {
     
-    const startingTweets = getTweets().filter(tweet => {
+    const startingTweets = tweetsFromAPI.filter(tweet => {
         return tweet.id <= TWEETSTODISPLAYONSTART
     });
 
