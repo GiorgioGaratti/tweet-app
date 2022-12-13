@@ -4,8 +4,7 @@ import { getInitialTweets, getTweets} from './api/tweetAPI';
 import { useEffect, useState } from 'react';
 import './App.css';
 import AddTweet from './components/AddTweet';
-import findNewTweets from './lib/findNewTweets';
-import findMostRecentTweet from './lib/findMostRecentTweet';
+import getNewListToRender from './lib/getNewListToRender';
 import NoMoreTweetsMessage from './components/NoMoreTweetsMessage';
 import deleteTweet from './lib/deleteTweet';
 
@@ -19,51 +18,38 @@ function App() {
 	const [displayNoMoreTwMex, setDisplayNoMoreTwMex] = useState(false);
 
     useEffect(() => {
-        /* console.log("effects dopo mount di App.js:"); */
+        // call API only once to get list of tweets
         const listOfAllTweets = getTweets();
+        // set full tweet list
         setTweetsFromAPI(listOfAllTweets);
-        /* console.log(listOfAllTweets); */
+        // set list of tweets to render
         setTweetList(getInitialTweets(listOfAllTweets));
-        /* console.log(false); */
     },[]);
-
-    /* useEffect(() => {
-        console.log("set di tweetList");
-    }, [tweetList]); */
-
-    /* useEffect(() => {
-        console.log("effect dopo set di teewtlist from api");
-    },[tweetsFromAPI]); */
 
     // called onclick of addtweet button
     // TODO: think how to isolate logic
-    const handleAddTweet = (tweetsFromAPI, tweetList) => {
+    const handleAddTweet = () => {
+
         if(tweetsFromAPI.length !== tweetList.length){
-            const listOfNotDisplayedTweets = findNewTweets(tweetsFromAPI, tweetList);
-
-            const newTweetToAdd = findMostRecentTweet(listOfNotDisplayedTweets);
-
-            tweetList.unshift(newTweetToAdd);
-
-            setTweetList(tweetList);
+            setTweetList(getNewListToRender([...tweetsFromAPI], [...tweetList]));
         } else if (tweetsFromAPI.length === tweetList.length) {
             setDisplayNoMoreTwMex(true);
         }
+
     }
     
 
-    const handleDeleteTweet = (tweetListCopy, tweetIdToRemove) => {
-        /* console.log("chiamata handleDeleteTweet"); */
-        setTweetList(deleteTweet(tweetListCopy,tweetIdToRemove));
+    const handleDeleteTweet = (tweetIdToRemove) => {
+
+        setTweetList(deleteTweet([...tweetList], tweetIdToRemove));
         setDisplayNoMoreTwMex(false);
+
     }
     
-   /*  console.log("render App.js");
- */
 	return (
 		<div>
 			<Title />
-			<AddTweet action={handleAddTweet} tweetsFromAPI={tweetsFromAPI} tweetList={tweetList} />
+			<AddTweet action={handleAddTweet} />
 			<NoMoreTweetsMessage display={displayNoMoreTwMex} />
 			<TweetList changeStateAction={handleDeleteTweet} tweetList={tweetList} />
 		</div>
