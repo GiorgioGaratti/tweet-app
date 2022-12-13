@@ -1,4 +1,4 @@
-// called onlick of delete button
+// callback called onlick of delete button
 const deleteTweet = (tweetList, tweetIdToRemove) => {
         
 /*     // shallow copy of rendered tweets list

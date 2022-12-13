@@ -16,25 +16,24 @@ function App() {
 	// hook: list of tweets to render
 	const [tweetList, setTweetList] = useState();
     // hook: (boolean) if true show 'no more tweets' message
-	const [displayNoMoreTwMex, setDisplayNoMoreTwMex] = useState();
+	const [displayNoMoreTwMex, setDisplayNoMoreTwMex] = useState(false);
 
     useEffect(() => {
-        console.log("effects dopo mount di App.js:");
+        /* console.log("effects dopo mount di App.js:"); */
         const listOfAllTweets = getTweets();
         setTweetsFromAPI(listOfAllTweets);
-        console.log(listOfAllTweets);
+        /* console.log(listOfAllTweets); */
         setTweetList(getInitialTweets(listOfAllTweets));
-        setDisplayNoMoreTwMex(false);
-        console.log(false);
+        /* console.log(false); */
     },[]);
 
-    useEffect(() => {
+    /* useEffect(() => {
         console.log("set di tweetList");
-    }, [tweetList]);
+    }, [tweetList]); */
 
-    useEffect(() => {
+    /* useEffect(() => {
         console.log("effect dopo set di teewtlist from api");
-    },[tweetsFromAPI]);
+    },[tweetsFromAPI]); */
 
     // called onclick of addtweet button
     // TODO: think how to isolate logic
@@ -53,19 +52,20 @@ function App() {
     }
     
 
-    const handleDeleteTweet = (tweetIdToRemove) => {
-        console.log("chiamata handleDeleteTweet");
-        setTweetList(deleteTweet(tweetList,tweetIdToRemove));
+    const handleDeleteTweet = (tweetListCopy, tweetIdToRemove) => {
+        /* console.log("chiamata handleDeleteTweet"); */
+        setTweetList(deleteTweet(tweetListCopy,tweetIdToRemove));
+        setDisplayNoMoreTwMex(false);
     }
     
-    console.log("render App.js");
-
+   /*  console.log("render App.js");
+ */
 	return (
 		<div>
 			<Title />
 			<AddTweet action={handleAddTweet} tweetsFromAPI={tweetsFromAPI} tweetList={tweetList} />
 			<NoMoreTweetsMessage display={displayNoMoreTwMex} />
-			<TweetList tweetList={tweetList} changeStateAction={handleDeleteTweet} />
+			<TweetList changeStateAction={handleDeleteTweet} tweetList={tweetList} />
 		</div>
 	);
 }
