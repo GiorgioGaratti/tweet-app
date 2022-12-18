@@ -11,20 +11,40 @@ import deleteTweet from './lib/deleteTweet';
 function App() {
     
     // hook: list of tweets from API
-    const [tweetsFromAPI, setTweetsFromAPI] = useState();
+    const [tweetsFromAPI, setTweetsFromAPI] = useState([]);
 	// hook: list of tweets to render
-	const [tweetList, setTweetList] = useState();
+	const [tweetList, setTweetList] = useState([]);
     // hook: (boolean) if true show 'no more tweets' message
 	const [displayNoMoreTwMex, setDisplayNoMoreTwMex] = useState(false);
 
+/*     const [json, setJson] = useState({});
+
+    useEffect(() => {
+        const options = {
+            method: 'GET', 
+            headers: {
+                'X-Api-Key': 'umQrmYyfsElCHzp9sU+TSQ==EXTZJphEj1dZo9S3'
+            }
+        }
+
+        const getUser = async () => {
+            const response = await fetch("https://api.api-ninjas.com/v1/randomuser", options);
+            const json = await response.json();
+            setJson(json);
+        }
+
+        getUser();
+    }, []); */
+
     useEffect(() => {
         // call API to get list of tweets only once 
-        const listOfAllTweets = getTweets();
+        const listOfAllTweets = getTweets(/* json */);
         // set full tweet list
         setTweetsFromAPI(listOfAllTweets);
         // set list of tweets to render
         setTweetList(getInitialTweets(listOfAllTweets));
-    },[]);
+
+    }, [/* json */]);
 
     // called onclick of addtweet button
     const handleAddTweet = () => {
@@ -52,4 +72,3 @@ function App() {
 }
 
 export default App;
-

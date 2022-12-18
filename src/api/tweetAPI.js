@@ -16,6 +16,7 @@ const datetime7 = datetimeList.at(6);
 
 // get full list of stored tweets
 const getTweets = () => {
+
     return [
     {
         id: 1,
@@ -24,9 +25,13 @@ const getTweets = () => {
             imgAvAlt: "foto avatar 1",
             fullname: "Giorgio Garatti",
             username: "@gg98"
+            /* fullname: usercreated.name,
+            username: usercreated.username */
+            /* username: "https://api.namefake.com/".username */
         },   
         tweetContent: {
             imgSrc: "https://images.pexels.com/photos/167699/pexels-photo-167699.jpeg",
+            /* imgSrc: "https://picsum.photos/350/200", */
             imgAlt: "foto tweet 1",
             text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.Donec semper, magna non sollicitudin tincidunt, urna orci dapibus leo, et consequat sapien ante a dolor.",
             datetime: {
@@ -46,7 +51,7 @@ const getTweets = () => {
             username: "@ElMusk"
         },
         tweetContent: {
-            imgSrc: "https://images.pexels.com/photos/2662116/pexels-photo-2662116.jpeg",
+            imgSrc: "https://picsum.photos/350/200",
             imgAlt: "foto tweet 2",
             text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
             datetime: {
@@ -66,7 +71,7 @@ const getTweets = () => {
             username: "@FirstLady"
         },
         tweetContent: {
-            imgSrc: "https://images.pexels.com/photos/2775196/pexels-photo-2775196.jpeg",
+            imgSrc: "https://picsum.photos/350/200",
             imgAlt: "foto tweet 3",
             text: "Donec semper, magna non sollicitudin tincidunt, urna orci dapibus leo, et consequat sapien ante a dolor.",
             datetime: {
@@ -86,7 +91,7 @@ const getTweets = () => {
             username: "@jdoe"
         },
         tweetContent: {
-            imgSrc: "https://images.pexels.com/photos/2775196/pexels-photo-2775196.jpeg",
+            imgSrc: "https://picsum.photos/350/200",
             imgAlt: "foto tweet 4",
             text: "Donec semper, magna non sollicitudin tincidunt, urna orci dapibus leo, et consequat sapien ante a dolor.",
             datetime: {
@@ -106,7 +111,7 @@ const getTweets = () => {
             username: "@rdean"
         },
         tweetContent: {
-            imgSrc: "https://images.pexels.com/photos/2775196/pexels-photo-2775196.jpeg",
+            imgSrc: "https://picsum.photos/350/200",
             imgAlt: "foto tweet 5",
             text: "Donec semper, magna non sollicitudin tincidunt, urna orci dapibus leo, et consequat sapien ante a dolor.",
             datetime: {
@@ -126,7 +131,7 @@ const getTweets = () => {
             username: "@jp"
         },
         tweetContent: {
-            imgSrc: "https://images.pexels.com/photos/2775196/pexels-photo-2775196.jpeg",
+            imgSrc: "https://picsum.photos/350/200",
             imgAlt: "foto tweet 6",
             text: "Donec semper, magna non sollicitudin tincidunt.",
             datetime: {
@@ -146,7 +151,7 @@ const getTweets = () => {
             username: "@luca_bianchi_90"
         },
         tweetContent: {
-            imgSrc: "https://images.pexels.com/photos/2775196/pexels-photo-2775196.jpeg",
+            imgSrc: "https://picsum.photos/350/200",
             imgAlt: "foto tweet 7",
             text: "Donec semper, magna non sollicitudin tincidunt.",
             datetime: {
