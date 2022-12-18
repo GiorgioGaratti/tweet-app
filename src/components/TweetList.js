@@ -16,7 +16,7 @@ const TweetList = (props) => {
                         id={tweet.id}
                         user={tweet.user} 
                         tweetContent={tweet.tweetContent}
-                        changeStateAction={() => props.changeStateAction(tweet.id)} />;
+                        changeStateAction={props.changeStateAction} />;
                 })
                 }
             </div>

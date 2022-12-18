@@ -1,6 +1,7 @@
 /* GENERAL */
-/* height e width di un elemento settano la sue dimensioni finali 
-   dimensioni = height + width + padding + border */
+/* using box-sizing: border-box; I can set div final dimensions 
+   using height and width properties.
+   dimensions = height + width + padding + border */
 * {
 	box-sizing: border-box;
 }
@@ -22,7 +23,7 @@ body {
 	margin: 50px 0px 50px 0px;
 }
 
-/* AttTweet & NoMoreTweetsMessage */
+/* AddTweet & NoMoreTweetsMessage */
 .addtweet, .nomoretweetsmessagediv {
 	display: flex;
 	justify-content: center;
@@ -63,6 +64,12 @@ body {
 	outline: 0;
 }
 
+.addbtn:disabled {
+    background-color: #f7f7fa;
+    cursor: default;
+}
+
+/* NoMoreTweetsMessage */
 .nomoretweetsmessage {
 	background-color: #fff;
 	border: 1px solid #d5d9d9;
@@ -83,7 +90,7 @@ body {
 	-webkit-user-select: none;
 	touch-action: manipulation;
 	vertical-align: middle;
-	width: 40%;
+	width: 200px;
 }
 
 /* TweetList */
@@ -96,7 +103,7 @@ body {
 
 /* Tweet */
 .tweet {
-	width: 40%;
+	width: 350px;
 	margin-bottom: 25px;
 	border: 2px;
 	border-color: blue;
@@ -105,7 +112,7 @@ body {
 }
 
 .tweetbody {
-	padding: 10px 15px 15px 15px;
+	padding: 10px 25px;
 }
 
 .image {
@@ -145,12 +152,36 @@ body {
 
 .tweetdate {
 	color: darkgrey;
+    margin: 10px 0px;
+}
+
+#likeinteraction {
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none; /* IE 10 and IE 11 */
+    user-select: none; /* Standard syntax */
+	margin: 0px 23px 0px 0px;
+}
+
+.likesicon {
+	align-self: center;
+    cursor: pointer;
+}
+
+.likesdivfalse {
+	display: flex;
+	flex-direction: row;
+}
+
+.likesdivtrue {
+	display: flex;
+	flex-direction: row;
+	color: red;
 }
 
 .tweetinteraction {
-	display: flex;
+    display: flex;
 	flex-direction: row;
-	color: darkgrey;
+    align-items: center;
 }
 
 .tweetinteraction img {
@@ -159,19 +190,28 @@ body {
 }
 
 .numberlikes {
-	margin: 0px 15px 0px 0px;
     align-self: center;
     display: flex;
+    padding-left: 5px;
+    cursor: pointer;
+}
+
+.false {
+	color: black;
+}
+
+.true {
+	color: red;
 }
 
 .numberviews {
-	margin: 0px 10px 0px 0px;
+	padding-left: 5px;
     align-self: center;
     display: flex;
 }
 
 .iconinteraction {
-	margin-right: 3px;
+	margin-right: 7px;
 	align-self: center;
 	color: darkgrey;
 }
@@ -183,9 +223,10 @@ body {
     box-sizing: border-box;
 }
 
-.deletetweetbtn {
-    cursor: pointer;
-    border: none;
-    background-color: whitesmoke;
-    font-size: 23px;
+.deletebtn {
+    color:rgb(218, 23, 23) !important;
+}
+
+.deletebtn:hover {
+    background-color:rgba(218, 23, 23, 0.103) !important;
 }

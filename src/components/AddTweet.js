@@ -3,7 +3,7 @@ const AddTweet = (props) => {
 
     return (
         <div className="addtweet">
-            <button className="addbtn" onClick={props.action}>
+            <button className="addbtn" onClick={props.action} disabled={props.disabled}>
                 Aggiungi Tweet
             </button>
         </div>

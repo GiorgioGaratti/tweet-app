@@ -18,7 +18,7 @@ function App() {
 	const [displayNoMoreTwMex, setDisplayNoMoreTwMex] = useState(false);
 
     useEffect(() => {
-        // call API only once to get list of tweets
+        // call API to get list of tweets only once 
         const listOfAllTweets = getTweets();
         // set full tweet list
         setTweetsFromAPI(listOfAllTweets);
@@ -27,29 +27,24 @@ function App() {
     },[]);
 
     // called onclick of addtweet button
-    // TODO: think how to isolate logic
     const handleAddTweet = () => {
-
         if(tweetsFromAPI.length !== tweetList.length){
             setTweetList(getNewListToRender([...tweetsFromAPI], [...tweetList]));
         } else if (tweetsFromAPI.length === tweetList.length) {
             setDisplayNoMoreTwMex(true);
         }
-
     }
     
-
+    // called onclick of deletetweet button
     const handleDeleteTweet = (tweetIdToRemove) => {
-
         setTweetList(deleteTweet([...tweetList], tweetIdToRemove));
         setDisplayNoMoreTwMex(false);
-
     }
     
 	return (
 		<div>
 			<Title />
-			<AddTweet action={handleAddTweet} />
+			<AddTweet action={handleAddTweet} disabled={displayNoMoreTwMex} />
 			<NoMoreTweetsMessage display={displayNoMoreTwMex} />
 			<TweetList changeStateAction={handleDeleteTweet} tweetList={tweetList} />
 		</div>
@@ -58,4 +53,3 @@ function App() {
 
 export default App;
 
-// rinominare funzioni collegate alle azioni dell'utente con handleEcc...

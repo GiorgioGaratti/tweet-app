@@ -16,7 +16,6 @@ const datetime7 = datetimeList.at(6);
 
 // get full list of stored tweets
 const getTweets = () => {
-    console.log("gettweets()");
     return [
     {
         id: 1,
