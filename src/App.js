@@ -1,7 +1,7 @@
 import Title from './components/Title';
 import TweetList from './components/TweetList';
 import { getInitialTweets, getTweets} from './api/tweetAPI';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './App.css';
 import AddTweet from './components/AddTweet';
 import getNewListToRender from './lib/getNewListToRender';
