@@ -1,14 +1,14 @@
-// AddTweet -> button to render most recent tweet from API
-const AddTweet = (props) => {
+import { memo } from "react";
 
+// AddTweet -> button to display most recent tweet from API
+const AddTweet = memo(function AddTweet({action, disabled}) {
     return (
         <div className="addtweet">
-            <button className="addbtn" onClick={props.action} disabled={props.disabled}>
+            <button className="addbtn" onClick={action} disabled={disabled}>
                 Aggiungi Tweet
             </button>
         </div>
     );
-}
-
+});
 
 export default AddTweet;

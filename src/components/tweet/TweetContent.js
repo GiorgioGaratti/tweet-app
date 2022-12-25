@@ -1,23 +1,12 @@
-import { useState } from "react";
 import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import DeleteTweet from "./DeleteTweet";
+import useTweetContent from "../../hooks/useTweetContent";
 
 const TweetContent = (props) => {
 
-    const [likes, setLikes] = useState(props.tweetContent.likes);
-    const [likeState, setLikeState] = useState(false);
-
-    const handleAddLike = () => {
-        if(likeState === false){
-            setLikes(likes + 1);
-            setLikeState(true);
-        } else {
-            setLikes(likes - 1);
-            setLikeState(false);
-        }
-    }
+    const [likes, likeState, handleAddLike] = useTweetContent(props);
 
     return (
         <div className="tweetcontent">
@@ -31,7 +20,7 @@ const TweetContent = (props) => {
                 <VisibilityIcon />
                 <p className="numberviews">{props.tweetContent.views}</p>
                 <DeleteTweet tweetId={props.tweetId} 
-                    changeStateAction={props.changeStateAction} />
+                    action={props.action} />
             </div>
         </div>
     );

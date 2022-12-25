@@ -1,0 +1,152 @@
+/*     const [json, setJson] = useState({});
+
+    useEffect(() => {
+        const options = {
+            method: 'GET', 
+            headers: {
+                'X-Api-Key': 'umQrmYyfsElCHzp9sU+TSQ==EXTZJphEj1dZo9S3'
+            }
+        }
+
+        const getUser = async () => {
+            const response = await fetch("https://api.api-ninjas.com/v1/randomuser", options);
+            const json = await response.json();
+            setJson(json);
+        }
+
+        getUser();
+    }, []); */
+
+    
+        /* const requestAvatar = async () => {
+            const srcAvatar = await fetch("https://i.pravatar.cc/60");
+            const jsonAvatar = await srcAvatar.json();
+            console.log(jsonAvatar);
+            return jsonAvatar;
+        } */
+        
+        /* const srcAvatar = fetchAvatarWithKy(); */
+
+        /* const requestName = async () => {
+            const responseName = await fetch("https://api.namefake.com/");
+            const jsonName = await responseName.json();
+            console.log(jsonName);
+            return jsonName;
+        }
+        const jsonName = requestName();
+
+        const requestImage = async () => {
+            const srcImage = await fetch("https://picsum.photos/350/200");
+            console.log(srcImage);
+            return srcImage;
+        }
+        const srcImage = requestImage();*/
+
+        /* const requestText = async () => {
+            const responseText = await fetch("http://asdfast.beobit.net/api/?type=word&length="+ Math.floor(Math.random() * (273) + 4));
+            const jsonText = await responseText.json();
+            console.log(jsonText);
+            return jsonText;
+        } *//* 
+        const jsonText = requestText(); */
+
+        /* const getUserData = async () => {
+    const options = {
+        method: 'GET',
+        headers: {
+            'X-RapidAPI-Key': '79ec220a63msh1a2e6aef321dda9p165833jsna5d1594570f5',
+            'X-RapidAPI-Host': 'random-user-by-api-ninjas.p.rapidapi.com'
+        }
+    };
+    
+    await fetch('https://random-user-by-api-ninjas.p.rapidapi.com/v1/randomuser', options)
+        .then(response => response.json())
+        .catch(err => console.error(err));
+};
+
+export default getUserData; */
+
+/* const getUserData = async () => {
+    const options = {
+        method: 'GET',
+        headers: {
+            'X-Api-Key': 'umQrmYyfsElCHzp9sU+TSQ==EXTZJphEj1dZo9S3'
+        }
+    };
+    
+    const response = await fetch('https://api.api-ninjas.com/v1/randomuser', options);
+    const json = await response.json();
+    await saveJson(json);
+}
+
+const saveJson = async (json) => {
+    return {
+        name: json.name,
+        username: json.username
+    }
+}
+
+export default getUserData; */
+
+const express = require('express');
+const request = require('request');
+
+const app = express();
+
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  next();
+});
+
+app.get('/jokes/random', (req, res) => {
+  request(
+    { url: 'https://joke-api-strict-cors.appspot.com/jokes/random' },
+    (error, response, body) => {
+      if (error || response.statusCode !== 200) {
+        return res.status(500).json({ type: 'error', message: err.message });
+      }
+
+      res.json(JSON.parse(body));
+    }
+  )
+});
+
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => console.log(`listening on ${PORT}`));
+
+
+/* import fetchAvatarWithKy from "./avatarAPI"; */
+/* import request
+
+
+
+
+const express = require('express');
+const request = require('request');
+
+const app = express();
+
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  next();
+});
+
+app.get('/jokes/random', (req, res) => {
+  request(
+    { url: 'https://joke-api-strict-cors.appspot.com/jokes/random' },
+    (error, response, body) => {
+      if (error || response.statusCode !== 200) {
+        return res.status(500).json({ type: 'error', message: err.message });
+      }
+
+      res.json(JSON.parse(body));
+    }
+  )
+});
+
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => console.log(`listening on ${PORT}`));
+ */
+
+
+

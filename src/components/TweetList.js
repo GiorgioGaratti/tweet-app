@@ -1,29 +1,28 @@
+import useTweetListToRender from "../hooks/useTweetListToRender";
 import Tweet from "./tweet/Tweet";
+import { memo } from "react";
 
-const TweetList = (props) => {
-    // to avoid errors in init phase, before mounting App.js and initializing 'tweetList' hook
-    if(props.tweetList !== undefined){
+// list of tweets to display
+const TweetList = memo(function TweetList(props) {
 
-        return (
-            <div className="tweetlist">
-                {
-                // render each tweet of the list
-                [...props.tweetList].map(tweet => {
-                    
-                    return <Tweet 
-                        className="tweet" 
-                        key={tweet.id} // unique id required, cannot access from props
-                        id={tweet.id}
-                        user={tweet.user} 
-                        tweetContent={tweet.tweetContent}
-                        changeStateAction={props.changeStateAction} />;
-                })
-                }
-            </div>
-        );
+    const [tweetListToRender] = useTweetListToRender(props);
 
-    }
-    
-}
+    return (
+        <div className="tweetlist">
+            {
+            // filter the full list of tweets keeping the ones to render
+            tweetListToRender.map(tweet => {
+                return <Tweet 
+                    className="tweet" 
+                    key={tweet.id} // unique id required by react for each list element, cannot be accessed from props
+                    id={tweet.id}
+                    user={tweet.user} 
+                    tweetContent={tweet.tweetContent}
+                    action={props.action} />;
+            })
+            }
+        </div>
+    );
+})
 
 export default TweetList;
