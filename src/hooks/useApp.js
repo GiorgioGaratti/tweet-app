@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import getTweets from "../api/tweetAPI";
 import deleteTweet from "../lib/deleteTweet";
 import getNewListOfTweetIdsToRender from "../lib/getNewListOfTweetIdsToRender";
@@ -6,10 +6,10 @@ import getNewListOfTweetIdsToRender from "../lib/getNewListOfTweetIdsToRender";
 const useApp = () => {
     // state variable: list of tweets from API
 	const [tweetList, setTweetList] = useState([]);
-    // state variable: (boolean) if true show "Nessun Nuovo Tweet" message
+    // state variable: (boolean) if true show message
 	const [displayNoMoreTwMex, setDisplayNoMoreTwMex] = useState(false);
     // state variable: list of rendered tweets ids
-    const[listOfTweetIds, setListOfTweetIds] = useState([]);
+    const [listOfTweetIds, setListOfTweetIds] = useState([]);
 
     // hook: get all tweets from API and set initial list of tweets ids
     useEffect(() => {
@@ -19,19 +19,22 @@ const useApp = () => {
     },[]);
 
     // called onclick of addtweet button
-    const handleAddTweet = useCallback(() => {
+    const handleAddTweet = () => {
+        // if I have at least one tweet to show
         if(tweetList.length !== listOfTweetIds.length){
             setListOfTweetIds(getNewListOfTweetIdsToRender([...tweetList], [...listOfTweetIds]));
-        } else if (tweetList.length === listOfTweetIds.length) {
+        } 
+        // else if there are no tweets to display
+        else if (tweetList.length === listOfTweetIds.length) {
             setDisplayNoMoreTwMex(true);
         }
-    },[tweetList, listOfTweetIds]);
+    };
     
     // called onclick of deletetweet button
-    const handleDeleteTweet = useCallback((tweetIdToRemove) => {
+    const handleDeleteTweet = (tweetIdToRemove) => {
         setListOfTweetIds(deleteTweet([...listOfTweetIds], tweetIdToRemove));
         setDisplayNoMoreTwMex(false);
-    }, [ listOfTweetIds]);
+    };
 
     return [tweetList, displayNoMoreTwMex, listOfTweetIds, handleAddTweet, handleDeleteTweet];
 }

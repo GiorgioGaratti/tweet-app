@@ -6,15 +6,15 @@ import NoMoreTweetsMessage from './components/NoMoreTweetsMessage';
 import useApp from './hooks/useApp';
 
 function App() {
-    // call custom hook with data for components
+    // call custom hook with data for App components
     const [tweetList, displayNoMoreTwMex, listOfTweetIds, handleAddTweet, handleDeleteTweet] = useApp();
     
 	return (
 		<> {/* react fragment */}
 			<Title />
-			<AddTweet action={handleAddTweet} disabled={displayNoMoreTwMex} /> {/* "Aggiungi Tweet" button */}
-			<NoMoreTweetsMessage display={displayNoMoreTwMex} /> {/* "Nessun Nuovo Tweet" message */}
-			<TweetList action={handleDeleteTweet} tweetList={tweetList} listOfTweetIds={listOfTweetIds} />
+			<AddTweet handleAddTweet={handleAddTweet} displayNoMoreTwMex={displayNoMoreTwMex} /> {/* add-tweet button */}
+			<NoMoreTweetsMessage displayNoMoreTwMex={displayNoMoreTwMex} /> {/* message when there are no more tweets to display */}
+			<TweetList handleDeleteTweet={handleDeleteTweet} tweetList={tweetList} listOfTweetIds={listOfTweetIds} />
 		</>
 	);
 }

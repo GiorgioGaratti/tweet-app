@@ -7,7 +7,7 @@ const findIdOfMostRecentTweet = (tweetList, listOfNewTweetsIds) => {
         return existingTweetId !== undefined ? true : false;
     });
 
-    // sort tweet list by the order of ISO-formatted dates
+    // sort the list by the order of ISO-formatted dates
     return newTweetsList.sort((a,b) => {
         let exit;
         if (a.tweetContent.datetime.dateISO > b.tweetContent.datetime.dateISO){

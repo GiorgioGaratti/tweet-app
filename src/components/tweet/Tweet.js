@@ -9,9 +9,9 @@ const Tweet = memo(function Tweet(props){
             <Image tweetContent={props.tweetContent} />
             <div className="tweetbody">
                 <User user={props.user} />
-                <TweetContent tweetId={props.id} 
+                <TweetContent id={props.id} 
                     tweetContent={props.tweetContent} 
-                    action={props.action} />
+                    handleDeleteTweet={props.handleDeleteTweet} />
             </div>
         </div>
     );

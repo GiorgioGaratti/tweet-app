@@ -2,7 +2,8 @@
 const deleteTweet = (listOfTweetIds, tweetIdToRemove) => {
 
     // remove from list of rendered tweets the one selected
-    const newListOfTweetsIdToRender = listOfTweetIds.filter((id, index, array) => {
+    // by returning the complete list without it
+    const newListOfTweetsIdToRender = listOfTweetIds.filter((id) => {
         return id !== tweetIdToRemove;
     });
 

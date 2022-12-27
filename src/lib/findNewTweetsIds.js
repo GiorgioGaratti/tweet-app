@@ -10,7 +10,7 @@ const findNewTweetsIds = (tweetList, listOfTweetIds) => {
         const tweetIdAlreadyPresent = listOfTweetIds.find(tweetIdInList => {
             return tweet.id === tweetIdInList;
         });
-        // if I haven't found none matching I add that tweet id to the array to return
+        // if I have found none matching I add that tweet id to the array to return
         return (tweetIdAlreadyPresent === undefined) ? newTweetsIdsList.push(tweet.id) : null;
     });
 

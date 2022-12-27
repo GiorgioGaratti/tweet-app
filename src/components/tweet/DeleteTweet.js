@@ -6,7 +6,7 @@ import { memo } from 'react';
 const DeleteTweet = memo(function DeleteTweet(props) {
     return(
         <div className="deletetweet">
-            <IconButton className="deletebtn" onClick={() => props.action(props.tweetId)}>
+            <IconButton className="deletebtn" onClick={() => props.handleDeleteTweet(props.id)}>
                 <DeleteIcon />
             </IconButton>
         </div>);

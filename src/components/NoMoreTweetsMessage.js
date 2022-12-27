@@ -1,11 +1,11 @@
 import { memo } from "react";
 
 // message informing that there no more tweets to display
-const NoMoreTweetsMessage = memo(function NoMoreTweetsMessage({display}) {
-    // display message or nothing
-    return display ? (
+const NoMoreTweetsMessage = memo(function NoMoreTweetsMessage({displayNoMoreTwMex}) {
+    // display message or do nothing
+    return displayNoMoreTwMex ? (
         <div className="nomoretweetsmessagediv">
-            <p className="nomoretweetsmessage">NESSUN NUOVO TWEET</p>
+            <p className="nomoretweetsmessage">Nessun Nuovo Tweet</p>
         </div>
     ) : null;
 });
